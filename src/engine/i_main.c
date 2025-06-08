@@ -40,10 +40,10 @@
 #include "d_main.h"
 
 #ifdef __OpenBSD__
-#include <SDL_main.h>
+#include <SDL3\SDL_main.h>
 #include <SDL.h>
 #else
-#include <SDL_main.h>
+#include <SDL3\SDL_main.h>
 #include <SDL.h>
 #endif
 

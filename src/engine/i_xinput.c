@@ -21,7 +21,7 @@
 //-----------------------------------------------------------------------------
 
 #include <SDL.h>
-#include <SDL_gamepad.h>
+#include <SDL3\SDL_gamepad.h>
 
 #include "doomdef.h"
 #include "con_cvar.h"

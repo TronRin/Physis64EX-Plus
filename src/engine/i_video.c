@@ -32,10 +32,10 @@
 
 #ifdef __OpenBSD__
 #include <SDL.h>
-#include <SDL_opengl.h> 
+#include <SDL3\SDL_opengl.h> 
 #else
 #include <SDL.h>
-#include <SDL_opengl.h> 
+#include <SDL3\SDL_opengl.h> 
 #endif
 
 #include "m_misc.h"
@@ -171,7 +171,7 @@ void I_InitScreen(void) {
         SDL_DestroyWindow(window);
     }
 
-	sprintf(title, "Doom64EX+ - Version Date: %s", version_date);
+	sprintf(title, "PHYSIS64 - Version Date: %s", version_date);
 	window = SDL_CreateWindow(title,
 		video_width,
 		video_height,

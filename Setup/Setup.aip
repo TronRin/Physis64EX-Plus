@@ -2,9 +2,9 @@
 <DOCUMENT Type="Advanced Installer" CreateVersion="22.3" version="22.7" Modules="simple" RootPath="." Language="en" Id="{B4723B47-1FD9-4576-996F-BFE374DEC5AF}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
-    <ROW Property="AI_PRODUCTNAME_ARP" Value="Doom64EX+"/>
+    <ROW Property="AI_PRODUCTNAME_ARP" Value="PHYSIS64"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_DOOM64EX.exe" Value="..\Windows\x64\Release"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DOOM64EX.exe" Value="DOOM64EX+.exe"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DOOM64EX.exe" Value="PHYSIS64.exe"/>
     <ROW Property="AI_UNINSTALLER" Value="msiexec.exe"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPHELPLINK" Value="https://github.com/atsb/Doom64EX-Plus/issues"/>
@@ -13,10 +13,10 @@
     <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://github.com/atsb/Doom64EX-Plus/issues"/>
     <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/atsb/Doom64EX-Plus/releases"/>
-    <ROW Property="Manufacturer" Value="astb"/>
+    <ROW Property="Manufacturer" Value="SevensEngine"/>
     <ROW Property="ProductCode" Value="1033:{AED2F72F-F30A-459C-B57D-82813A3BAEB3} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
-    <ROW Property="ProductName" Value="Doom64EX+"/>
+    <ROW Property="ProductName" Value="PHYSIS64"/>
     <ROW Property="ProductVersion" Value="1.0.0" Options="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{9A9B3D46-6B5C-4BA3-AA27-395BEB7D7C47}"/>
@@ -35,7 +35,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1" DirectoryOptions="3"/>
-    <ROW Directory="DOOM64EX_Dir" Directory_Parent="APPDIR" DefaultDir="DOOM64~1|DOOM64EX+" DirectoryOptions="3"/>
+    <ROW Directory="DOOM64EX_Dir" Directory_Parent="APPDIR" DefaultDir="DOOM64~1|PHYSIS64" DirectoryOptions="3"/>
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
@@ -105,7 +105,7 @@
     <ROW Name="AI_APPPATH_PERBUILD_DOOM64EX.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_DOOM64EX.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_DOOM64EX.exe]" Type="2" Content="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="Build" BuildOrder="1" BuildType="0" PackageFileName="Doom64EX+ Setup" Languages="en" InstallationType="4" SummInfoMetadata="Page Count:450" UseLargeSchema="true" MsiPackageType="x64"/>
+    <ROW BuildKey="DefaultBuild" BuildName="Build" BuildOrder="1" BuildType="0" PackageFileName="PHYSIS64 Setup" Languages="en" InstallationType="4" SummInfoMetadata="Page Count:450" UseLargeSchema="true" MsiPackageType="x64"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
@@ -258,8 +258,8 @@
     <ROW Registry="Windows" Root="-1" Key="Software\Microsoft\Windows" Name="\"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="DOOM64EX" Directory_="SHORTCUTDIR" Name="DOOM64~1|DOOM64EX+" Component_="DOOM64EX_PrimaryOutput" Target="[#DOOM64EX.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
-    <ROW Shortcut="DOOM64EX_1" Directory_="DesktopFolder" Name="DOOM64~1|DOOM64EX+" Component_="DOOM64EX_PrimaryOutput" Target="[#DOOM64EX.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+    <ROW Shortcut="DOOM64EX" Directory_="SHORTCUTDIR" Name="DOOM64~1|PHYSIS64" Component_="DOOM64EX_PrimaryOutput" Target="[#DOOM64EX.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+    <ROW Shortcut="DOOM64EX_1" Directory_="DesktopFolder" Name="DOOM64~1|PHYSIS64" Component_="DOOM64EX_PrimaryOutput" Target="[#DOOM64EX.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>
@@ -269,6 +269,6 @@
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.VsProjectComponent">
-    <ROW ProjectId="{f7595469-0b54-4529-b8fd-b73f4c061494}" ProjectName="DOOM64EX+" OutputGroup="PrimaryOutput" OutputFile="DOOM64EX.exe" OutputFileShortcut="DOOM64EX"/>
+    <ROW ProjectId="{f7595469-0b54-4529-b8fd-b73f4c061494}" ProjectName="PHYSIS64" OutputGroup="PrimaryOutput" OutputFile="DOOM64EX.exe" OutputFileShortcut="DOOM64EX"/>
   </COMPONENT>
 </DOCUMENT>
