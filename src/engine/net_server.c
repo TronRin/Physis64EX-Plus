@@ -1356,7 +1356,12 @@ static void NET_SV_PumpSendQueue(net_client_t* client)
 
 	// Add into the queue
 
-	client->sendqueue[client->sendseq % BACKUPTICS] = cmd;
+	if (client != NULL) {
+		client->sendqueue[client->sendseq % BACKUPTICS] = cmd;
+	}
+	else {
+		return;
+	}
 
 	// Transmit the new tic to the client
 

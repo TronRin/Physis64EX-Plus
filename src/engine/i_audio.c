@@ -123,7 +123,7 @@ CVAR_CMD(s_driver, sndio)
 struct Sound sound;
 struct Reverb fmod_reverb;
 
-#define MAX_GAME_SFX 256
+//#define MAX_GAME_SFX 256
 
 // FMOD Studio
 static float INCHES_PER_METER = 39.3701f;
@@ -309,7 +309,7 @@ typedef int(*signalhandler)(doomseq_t*);
 
 static void FMOD_ERROR_CHECK(FMOD_RESULT result) {
     if (result != FMOD_OK) {
-        printf("FMOD Studio: %s", FMOD_ErrorString(result));
+        printf("FMOD Studio: %s\n", FMOD_ErrorString(result));
     }
 }
 
@@ -1222,10 +1222,7 @@ void I_InitSequencer(void) {
     char* sfpath;
     void* extradriverdata = 0;
 
-    I_Printf("Audio Engine: FMOD Studio by Firelight Technologies Pty Ltd.\n\n");
-
-    FMOD_ERROR_CHECK(FMOD_System_SetDSPBufferSize(sound.fmod_studio_system, 1024, 128));
-    FMOD_ERROR_CHECK(FMOD_System_SetDSPBufferSize(sound.fmod_studio_system_music, 1024, 128));
+    I_Printf("Audio Engine: FMOD Studio by Firelight Technologies Pty Ltd.\n");
 
     FMOD_ERROR_CHECK(FMOD_System_Create(&sound.fmod_studio_system, FMOD_VERSION));
     FMOD_ERROR_CHECK(FMOD_System_Create(&sound.fmod_studio_system_music, FMOD_VERSION));
@@ -1237,7 +1234,7 @@ void I_InitSequencer(void) {
     FMOD_ERROR_CHECK(FMOD_System_GetMasterChannelGroup(sound.fmod_studio_system_music, &sound.master_music));
 
     // Set 3D min/max distance for each sound source if needed
-    FMOD_ERROR_CHECK(FMOD_Sound_Set3DMinMaxDistance(sound.fmod_studio_sound[num_sfx], 0.5f * INCHES_PER_METER, 127.0f * INCHES_PER_METER));
+    //FMOD_ERROR_CHECK(FMOD_Sound_Set3DMinMaxDistance(sound.fmod_studio_sound[num_sfx], 0.5f * INCHES_PER_METER, 127.0f * INCHES_PER_METER));
     // Add similar lines for other sound sources if necessary
 
     //
@@ -1386,7 +1383,9 @@ void I_ShutdownSound(void)
 //
 
 void I_SetMusicVolume(float volume) {
-    FMOD_ERROR_CHECK(FMOD_Channel_SetVolume(sound.fmod_studio_channel_music, volume / 255.0f));
+    if (sound.fmod_studio_channel_music) {
+        FMOD_ERROR_CHECK(FMOD_Channel_SetVolume(sound.fmod_studio_channel_music, volume / 255.0f));
+    }
     doomseq.musicvolume = (volume * 0.925f);
 }
 
@@ -1395,7 +1394,9 @@ void I_SetMusicVolume(float volume) {
 //
 
 void I_SetSoundVolume(float volume) {
-    FMOD_ERROR_CHECK(FMOD_Channel_SetVolume(sound.fmod_studio_channel, volume / 255.0f));
+    if (sound.fmod_studio_channel) {
+        FMOD_ERROR_CHECK(FMOD_Channel_SetVolume(sound.fmod_studio_channel, volume / 255.0f));
+    }
     doomseq.soundvolume = (volume * 0.925f);
 }
 
@@ -1704,7 +1705,7 @@ void FMOD_StopSound(sndsrc_t* origin, int sfx_id) {
 int FMOD_StartMusic(int mus_id) {
     FMOD_RESULT result;
     FMOD_BOOL isPlaying = false;
-    const int MAX_FMOD_MUSIC_TRACKS = 138;
+  
 
     if (sound.fmod_studio_channel_music) {
         FMOD_ERROR_CHECK(FMOD_Channel_IsPlaying(sound.fmod_studio_channel_music, &isPlaying));
@@ -1740,7 +1741,7 @@ int FMOD_StartMusic(int mus_id) {
             return mus_id;
         }
         else {
-            CON_Printf("FMOD_StartMusic: Failed to play pre-rendered track for mus_id %d.\n", mus_id);
+            CON_Warnf("FMOD_StartMusic: Failed to play pre-rendered track for mus_id %d.\n", mus_id);
             sound.fmod_studio_channel_music = NULL; // channel is null on failure
             return -1;
         }
@@ -1750,7 +1751,7 @@ int FMOD_StartMusic(int mus_id) {
         dmemset(&exinfo, 0, sizeof(FMOD_CREATESOUNDEXINFO));
         exinfo.cbsize = sizeof(FMOD_CREATESOUNDEXINFO);
         exinfo.length = doomseq.songs[mus_id].length;
-        exinfo.dlsname = "DOOMSND.DLS";
+        exinfo.dlsname = I_FindDataFile("DOOMSND.DLS");
 
         result = FMOD_System_CreateSound(sound.fmod_studio_system_music,
             (const char*)doomseq.songs[mus_id].data,
@@ -1758,6 +1759,7 @@ int FMOD_StartMusic(int mus_id) {
             &exinfo,
             &currentMidiSound);
         FMOD_ERROR_CHECK(result);
+        free((void*)exinfo.dlsname);
 
         if (result == FMOD_OK && currentMidiSound) {
             result = FMOD_System_PlaySound(sound.fmod_studio_system_music,
@@ -1773,7 +1775,7 @@ int FMOD_StartMusic(int mus_id) {
                 return mus_id;
             }
             else {
-                CON_Printf("FMOD_StartMusic: Failed to play MIDI sound for mus_id %d after creation.\n", mus_id);
+                CON_Warnf("FMOD_StartMusic: Failed to play MIDI sound for mus_id %d after creation.\n", mus_id);
                 FMOD_ERROR_CHECK(FMOD_Sound_Release(currentMidiSound));
                 currentMidiSound = NULL;
                 sound.fmod_studio_channel_music = NULL;
@@ -1781,7 +1783,7 @@ int FMOD_StartMusic(int mus_id) {
             }
         }
         else {
-            CON_Printf("FMOD_StartMusic: Failed to create MIDI sound for mus_id %d. Result: %d\n", mus_id, result);
+            CON_Warnf("FMOD_StartMusic: Failed to play MIDI sound for mus_id %d after creation.\n", mus_id);
             if (currentMidiSound) {
                 FMOD_ERROR_CHECK(FMOD_Sound_Release(currentMidiSound));
                 currentMidiSound = NULL;
