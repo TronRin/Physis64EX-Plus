@@ -76,3 +76,4 @@ Windows/DOOM64EX+/x64/Release/Doom64EX+.vcxproj.FileListAbsolute.txt
 Windows/DOOM64EX+/x64/Debug/Doom64EX+.vcxproj.FileListAbsolute.txt
 Windows/DOOM64.WAD
 DOOM64.WAD
+*.dll
