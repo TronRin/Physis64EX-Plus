@@ -96,7 +96,7 @@
     <ROW File="zlib1.dll" Component_="zlib1.dll" FileName="zlib1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\src\engine\3rdparty\Libs\x64\zlib1.dll" SelfReg="false"/>
     <ROW File="AUTHORS" Component_="AUTHORS" FileName="AUTHORS" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\AUTHORS" SelfReg="false"/>
     <ROW File="COPYING" Component_="AUTHORS" FileName="COPYING" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\COPYING" SelfReg="false"/>
-    <ROW File="doom64explus.wad" Component_="AUTHORS" FileName="DOOM64~1.WAD|doom64ex-plus.wad" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\doom64ex-plus.wad" SelfReg="false"/>
+    <ROW File="doom64explus.wad" Component_="AUTHORS" FileName="DOOM64~1.WAD|PHYSIS64.wad" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\PHYSIS64.wad" SelfReg="false"/>
     <ROW File="doomsnd.sf2" Component_="AUTHORS" FileName="doomsnd.sf2" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\doomsnd.sf2" SelfReg="false"/>
     <ROW File="LICENSE" Component_="AUTHORS" FileName="LICENSE" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\LICENSE" SelfReg="false"/>
     <ROW File="README.md" Component_="AUTHORS" FileName="README.md" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\README.md" SelfReg="false"/>
