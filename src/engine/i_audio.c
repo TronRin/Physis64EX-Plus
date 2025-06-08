@@ -40,9 +40,9 @@
 #endif
 
 #ifdef __OpenBSD__
-#include <SDL3/SDL.h>
+#include <SDL.h>
 #else
-#include <SDL3/SDL.h>
+#include <SDL.h>
 #endif
 
 #include "doomtype.h"

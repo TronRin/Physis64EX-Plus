@@ -32,10 +32,10 @@
 
 #ifdef __OpenBSD__
 #include <SDL.h>
-#include <SDL_opengl.h>
+#include <SDL_opengl.h> 
 #else
 #include <SDL.h>
-#include <SDL_opengl.h>
+#include <SDL_opengl.h> 
 #endif
 
 #include "m_misc.h"

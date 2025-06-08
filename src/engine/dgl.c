@@ -25,9 +25,9 @@
 //-----------------------------------------------------------------------------
 
 #ifdef __OpenBSD__
-#include <SDL_opengl.h>
+#include <SDL_opengl.h> 
 #else
-#include <SDL_opengl.h>
+#include <SDL_opengl.h> 
 #endif
 
 #ifdef __APPLE__
