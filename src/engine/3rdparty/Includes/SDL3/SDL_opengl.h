@@ -63,7 +63,7 @@
 #define __gl_h_
 
 #ifdef USE_MGL_NAMESPACE
-#include <SDL3/gl_mangle.h>
+#include </gl_mangle.h>
 #endif
 
 

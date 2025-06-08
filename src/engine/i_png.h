@@ -24,7 +24,7 @@
 #define __I_PNG_H__
 
 #include <stdbool.h>
-#include <png.h>
+#include <R:\Physis64EX-Plus\src\engine\3rdparty\Includes\png.h>
 #include "doomtype.h"
 
 byte* I_PNGReadData(int lump, bool palette, bool nopack, bool alpha,
