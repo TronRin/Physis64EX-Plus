@@ -309,7 +309,7 @@ int WI_Ticker(void) {
 
 	// play sound as counter increases
 	if (state && !(gametic & 3)) {
-		S_StartSound(NULL, sfx_pistol);
+		S_StartSound(NULL, sfx_enforcer);
 	}
 
 	return 0;

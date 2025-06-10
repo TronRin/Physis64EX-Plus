@@ -926,7 +926,7 @@ void A_PosAttack(mobj_t* actor) {
 		return;
 	}
 
-	S_StartSound(actor, sfx_pistol);
+	S_StartSound(actor, sfx_enforcer);
 	A_FaceTarget(actor);
 
 	angle = actor->angle;
@@ -977,7 +977,7 @@ void A_CPosAttack(mobj_t* actor)
 	if (!actor->target)
 		return;
 
-	S_StartSound(actor, sfx_pistol);
+	S_StartSound(actor, sfx_enforcer);
 	A_FaceTarget(actor);
 	bangle = actor->angle;
 	slope = P_AimLineAttack(actor, bangle, 0, MISSILERANGE);
@@ -1018,7 +1018,7 @@ void A_PlayAttack(mobj_t* actor) {
 		return;
 	}
 
-	S_StartSound(actor, sfx_pistol);
+	S_StartSound(actor, sfx_enforcer);
 	A_FaceTarget(actor);
 	bangle = actor->angle;
 
@@ -1942,7 +1942,7 @@ void A_SpidAttack(mobj_t* actor)
 	if (!actor->target)
 		return;
 
-	S_StartSound(actor, sfx_pistol);
+	S_StartSound(actor, sfx_enforcer);
 	A_FaceTarget(actor);
 	bangle = actor->angle;
 	slope = P_AimLineAttack(actor, bangle, 0, MISSILERANGE);

@@ -1278,9 +1278,9 @@ void G_PlayerReborn(int player) {
 	p->usedown = p->attackdown = p->jumpdown = true;  // don't do anything immediately
 	p->playerstate = PST_LIVE;
 	p->health = deh_initial_health;
-	p->readyweapon = p->pendingweapon = wp_pistol;
+	p->readyweapon = p->pendingweapon = wp_enforcer;
 	p->weaponowned[wp_fist] = true;
-	p->weaponowned[wp_pistol] = true;
+	p->weaponowned[wp_enforcer] = true;
 	p->ammo[am_clip] = deh_initial_bullets;
 	p->recoilpitch = 0;
 

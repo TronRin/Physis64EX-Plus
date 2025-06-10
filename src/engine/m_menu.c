@@ -2410,7 +2410,7 @@ static void M_PasswordSelect(void) {
 			G_DeferedInitNew(gameskill, gamemap);
 			doPassword = true;
 			currentMenu->lastOn = itemOn;
-			S_StartSound(NULL, sfx_pistol);
+			S_StartSound(NULL, sfx_enforcer);
 			M_ClearMenus();
 
 			return;
@@ -3483,7 +3483,7 @@ static void M_Return(int choice) {
 	if (currentMenu->prevMenu) {
 		menufadefunc = M_MenuFadeOut;
 		alphaprevmenu = true;
-		S_StartSound(NULL, sfx_pistol);
+		S_StartSound(NULL, sfx_enforcer);
 	}
 }
 
@@ -4377,7 +4377,7 @@ boolean M_Responder(event_t* ev) {
 						currentMenu->menuitems[itemOn].routine(itemOn);
 					}
 
-					S_StartSound(NULL, sfx_pistol);
+					S_StartSound(NULL, sfx_enforcer);
 				}
 			}
 			return true;

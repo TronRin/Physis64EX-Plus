@@ -55,7 +55,7 @@ char* sprnames[NUMSPRITES + 1] = {  //0x5FA30
 	"A021", "A003", "A020", "A014", "A016", "A008", "A007", "A015",
 	"A001", "A012", "A010", "A018", "A017", "A026", "A022", "A028",
 	"A029", "A035", "A036", "TRE3", "TRE2", "TRE1", "A013", "A019",
-	"A004", "A005", "A023", "SAWG", "PUNG", "PISG", "SHT1", "SHT2",
+	"A004", "A005", "A023", "SAWG", "PUNG", "ENFR", "SHT1", "SHT2",
 	"CHGG", "ROCK", "PLAS", "BFGG", "LASR", "S015", "S016", "S003",
 	"S039", "S025", "S033", "S034", "S035", "S005", "S006", "S007",
 	"S008", "S009", "S010", "S011", "S012", "S013", "S014", "S017",
@@ -72,7 +72,7 @@ void A_Lower();
 void A_Raise();
 void A_Punch();
 void A_ReFire();
-void A_FirePistol();
+void A_FireEnforcer();
 void A_FireShotgun();
 void A_FireShotgun2();
 void A_CheckReload();
@@ -988,15 +988,15 @@ state_t states[NUMSTATES] = {      //0x4DFF4
 	/*S_PUNCH4*/            { SPR_PUNG, 2, 4, {NULL}, S_PUNCH5 },
 	/*S_PUNCH5*/            { SPR_PUNG, 1, 5, {A_ReFire}, S_PUNCH },
 
-	/*S_PISTOL*/            { SPR_PISG, 0, 1, {A_WeaponReady}, S_PISTOL },
-	/*S_PISTOLDOWN*/        { SPR_PISG, 0, 1, {A_Lower}, S_PISTOLDOWN },
-	/*S_PISTOLUP*/          { SPR_PISG, 0, 1, {A_Raise}, S_PISTOLUP },
-	/*S_PISTOL1*/           { SPR_PISG, 0, 2, {NULL}, S_PISTOL2 },
-	/*S_PISTOL2*/           { SPR_PISG, 1, 1, {A_FirePistol}, S_PISTOL3 },
-	/*S_PISTOL3*/           { SPR_PISG, 2, 5, {NULL}, S_PISTOL4 },
-	/*S_PISTOL4*/           { SPR_PISG, 1, 5, {NULL}, S_PISTOL5 },
-	/*S_PISTOL5*/           { SPR_PISG, 0, 1, {A_ReFire}, S_PISTOL },
-	/*S_PISTOLFLASH*/       { SPR_PISG, 32771, 3, {NULL}, S_NULL },
+	/*S_ENFORCER*/            { SPR_ENFR, 0, 1, {A_WeaponReady}, S_ENFORCER },
+	/*S_ENFORCERDOWN*/        { SPR_ENFR, 0, 1, {A_Lower}, S_ENFORCERDOWN },
+	/*S_ENFORCERUP*/          { SPR_ENFR, 0, 1, {A_Raise}, S_ENFORCERUP },
+	/*S_ENFORCER1*/           { SPR_ENFR, 0, 2, {NULL}, S_ENFORCER2 },
+	/*S_ENFORCER2*/           { SPR_ENFR, 1, 1, {A_FireEnforcer}, S_ENFORCER3 },
+	/*S_ENFORCER3*/           { SPR_ENFR, 2, 4, {NULL}, S_ENFORCER4 },
+	/*S_ENFORCER4*/           { SPR_ENFR, 1, 3, {NULL}, S_ENFORCER5 },
+	/*S_ENFORCER5*/           { SPR_ENFR, 0, 1, {A_ReFire}, S_ENFORCER },
+	/*S_ENFORCERFLASH*/       { SPR_ENFR, 32771, 3, {NULL}, S_NULL },
 
 	/*S_SGUN*/              { SPR_SHT1, 0, 1, {A_WeaponReady}, S_SGUN },
 	/*S_SGUNDOWN*/          { SPR_SHT1, 0, 1, {A_Lower}, S_SGUNDOWN },
@@ -1580,7 +1580,7 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {      //0x51E38
 		S_POSS1_RUN1,        //seestate
 		sfx_possit1,        //seesound
 		8,        //reactiontime
-		sfx_pistol,        //attacksound
+		sfx_enforcer,        //attacksound
 		S_POSS1_PAIN,        //painstate
 		200,        //painchance
 		sfx_dbpain1,        //painsound
@@ -6225,7 +6225,7 @@ MF_SOLID,// flags
 		S_SPID_RUN1,        //seestate
 		sfx_spisit,        //seesound
 		8,        //reactiontime
-		sfx_pistol,        //attacksound
+		sfx_enforcer,        //attacksound
 		S_SPID_PAIN,        //painstate
 		40,        //painchance
 		sfx_dbpain2,        //painsound

@@ -138,14 +138,14 @@ boolean P_GiveAmmo(player_t* player, ammotype_t ammo, int num) {
 				player->pendingweapon = wp_chaingun;
 			}
 			else {
-				player->pendingweapon = wp_pistol;
+				player->pendingweapon = wp_enforcer;
 			}
 		}
 		break;
 
 	case am_shell:
 		if (player->readyweapon == wp_fist
-			|| player->readyweapon == wp_pistol) {
+			|| player->readyweapon == wp_enforcer) {
 			if (player->weaponowned[wp_shotgun]) {
 				player->pendingweapon = wp_shotgun;
 			}
@@ -154,7 +154,7 @@ boolean P_GiveAmmo(player_t* player, ammotype_t ammo, int num) {
 
 	case am_cell:
 		if (player->readyweapon == wp_fist
-			|| player->readyweapon == wp_pistol) {
+			|| player->readyweapon == wp_enforcer) {
 			if (player->weaponowned[wp_plasma]) {
 				player->pendingweapon = wp_plasma;
 			}

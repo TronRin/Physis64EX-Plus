@@ -189,7 +189,7 @@ typedef enum {
 typedef enum {
 	wp_chainsaw,
 	wp_fist,
-	wp_pistol,
+	wp_enforcer,
 	wp_shotgun,
 	wp_supershotgun,
 	wp_chaingun,

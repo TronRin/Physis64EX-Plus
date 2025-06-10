@@ -111,7 +111,7 @@ void M_EncodePassword(void) {
 	// weapons
 
 	for (i = 0; i < NUMWEAPONS; i++) {
-		if (i != wp_fist && i != wp_pistol) {
+		if (i != wp_fist && i != wp_enforcer) {
 			if (player->weaponowned[i]) {
 				encode[1] |= (1 << bit);
 				encode[1] = encode[1] & 0xff;
@@ -365,7 +365,7 @@ boolean M_DecodePassword(boolean checkOnly) {
 	// get weapons
 	//
 	for (i = 0; i < NUMWEAPONS; i++) {
-		if (i != wp_fist && i != wp_pistol) {
+		if (i != wp_fist && i != wp_enforcer) {
 			if (decode[1] & (1 << bit)) {
 				player->weaponowned[i] = true;
 			}

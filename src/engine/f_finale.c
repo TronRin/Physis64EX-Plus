@@ -249,7 +249,7 @@ int F_Ticker(void) {
 			case S_SPID_ATK2:							// spider demon
 			case S_SPID_ATK4:
 			case S_SPID_ATK6:
-				sound = sfx_pistol;
+				sound = sfx_enforcer;
 				break;
 			case S_POSS2_ATK2:                          // shotgun guy
 				sound = sfx_shotgun;

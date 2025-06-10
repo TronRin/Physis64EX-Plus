@@ -60,7 +60,7 @@ CVAR_EXTERNAL(v_accessibility);
 weaponinfo_t    weaponinfo[NUMWEAPONS] = {
 	{ am_noammo,    S_SAWUP, S_SAWDOWN, S_SAWA, S_SAW1, S_NULL },    // chainsaw
 	{ am_noammo,    S_PUNCHUP, S_PUNCHDOWN, S_PUNCH, S_PUNCH1, S_NULL },    // fist
-	{ am_clip,      S_PISTOLUP, S_PISTOLDOWN, S_PISTOL, S_PISTOL1, S_PISTOLFLASH },    // pistol
+	{ am_clip,      S_ENFORCERUP, S_ENFORCERDOWN, S_ENFORCER, S_ENFORCER1, S_ENFORCERFLASH },    // pistol
 	{ am_shell,     S_SGUNUP, S_SGUNDOWN, S_SGUN, S_SGUN1, S_SGUNFLASH },    // shotgun
 	{ am_shell,     S_SSGUP, S_SSGDOWN, S_SSG, S_SSG1, S_SSGFLASH },    // super shotgun
 	{ am_clip,      S_CHAINGUP, S_CHAINGDOWN, S_CHAING, S_CHAING1, S_CHAINGLIGHT1 },    // chaingun
@@ -229,7 +229,7 @@ boolean P_CheckAmmo(player_t* player) {
 			player->pendingweapon = wp_shotgun;
 		}
 		else if (player->ammo[am_clip]) {
-			player->pendingweapon = wp_pistol;
+			player->pendingweapon = wp_enforcer;
 		}
 		else if (player->weaponowned[wp_chainsaw]) {
 			player->pendingweapon = wp_chainsaw;
@@ -272,7 +272,7 @@ void P_FireWeapon(player_t* player) {
 	player->psprites[ps_weapon].sx = FRACUNIT;
 	player->psprites[ps_weapon].sy = WEAPONTOP;
 	newstate = weaponinfo[player->readyweapon].atkstate;
-	if (player->refire && player->readyweapon == wp_pistol) {
+	if (player->refire && player->readyweapon == wp_enforcer) {
 		newstate++;
 	}
 	P_SetPsprite(player, ps_weapon, newstate);
@@ -611,19 +611,34 @@ void P_GunShot(mobj_t* mo, boolean accurate) {
 	P_LineAttack(mo, angle, MISSILERANGE, bulletslope, damage);
 }
 
+void P_StrongGunShot(mobj_t* mo, boolean accurate) {
+	angle_t     angle;
+	int         damage;
+	int         rnd1, rnd2;
+
+	damage = ((P_Random() & 6) * 8) + 3;
+	angle = mo->angle;
+
+	if (!accurate) {
+		angle += ((angle_t)P_SubRandom()) << 18;
+	}
+
+	P_LineAttack(mo, angle, MISSILERANGE, bulletslope, damage);
+}
+
 //
-// A_FirePistol
+// A_FireEnforcer
 //
-void A_FirePistol(player_t* player, pspdef_t* psp)
+void A_FireEnforcer(player_t* player, pspdef_t* psp)
 {
-	S_StartSound(player->mo, sfx_pistol);
+	S_StartSound(player->mo, sfx_enforcer);
 
 	player->ammo[weaponinfo[player->readyweapon].ammo]--;
 
 	P_SetPsprite(player, ps_flash, weaponinfo[player->readyweapon].flashstate);
 	P_BulletSlope(player->mo);
 
-	P_GunShot(player->mo, !player->refire);
+	P_StrongGunShot(player->mo, !player->refire);
 }
 
 //
@@ -689,7 +704,7 @@ void A_FireCGun(player_t* player, pspdef_t* psp) {
 		return;
 	}
 
-	S_StartSound(player->mo, sfx_pistol);
+	S_StartSound(player->mo, sfx_enforcer);
 
 	P_SetMobjState(player->mo, S_PLAY_ATK2);
 	player->ammo[weaponinfo[player->readyweapon].ammo]--;

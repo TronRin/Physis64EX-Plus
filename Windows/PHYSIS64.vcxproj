@@ -136,7 +136,6 @@
       <AdditionalIncludeDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;R:\Physis64EX-Plus\src\engine\3rdparty\Includes\;R:\Physis64EX-Plus\src\engine\3rdparty\Includes\SDL3</AdditionalIncludeDirectories>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <Optimization>Disabled</Optimization>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <TranslateIncludes>false</TranslateIncludes>

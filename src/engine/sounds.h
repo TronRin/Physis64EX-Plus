@@ -30,7 +30,7 @@
 
 typedef enum {
 	sfx_None,
-	sfx_pistol,     //pistol
+	sfx_enforcer,     //pistol
 	sfx_shotgun,    //shotgun
 	sfx_plasma,     //plasma
 	sfx_bfg,        //bfg
